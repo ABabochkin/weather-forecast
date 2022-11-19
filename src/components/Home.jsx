@@ -13,7 +13,7 @@ import '../components/home.scss';
 const Home = (props) => {
 
     const [modal, setModal] = useState(false);
-    const [weatherData, setWeatherData] = useState([]);
+    const [weatherData, setWeatherData] = useState({});
     
     const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -49,8 +49,16 @@ const Home = (props) => {
         { modal ?  <Popup openModal={openModal} weatherData={weatherData} /> : null } 
             <Header getWeather={getWeather} location  />
             <div className='home' >
-                <ThisDay openModal={openModal} weatherData={weatherData} />
-                <ThisDayInfo openModal={openModal} weatherData={weatherData} />
+                <ThisDay 
+                    openModal={openModal} 
+                    weatherData={weatherData} 
+                />
+                <ThisDayInfo 
+                    openModal={openModal} 
+                    weatherData={weatherData.main} 
+                    weatherTemp = {weatherData.weather} 
+                    weatherWind = {weatherData.wind}
+                /> 
             </div>
             <Days />
         </div>

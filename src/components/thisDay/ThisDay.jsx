@@ -16,12 +16,14 @@ const ThisDay = (props) => {
     const min = new Date().getMinutes();
 
 
+
+
     return (
         <div className='container'>
             <div className='day' onClick={openModal} >
                 <div className='day-upper' >
                     <div className='day-temp' >
-                        { weatherData.main ? <p>{Math.floor(weatherData.main.temp)}°</p> : null } 
+                        { weatherData.main ? <p>{Math.floor(weatherData.main.temp)}°</p> : <p style={{fontSize:'50px', color:'red'}} >Неизвестно</p> } 
                         <span>Сегодня</span>
                     </div>
 
@@ -43,7 +45,7 @@ const ThisDay = (props) => {
                 </div>
                 <div className='day-under' >
                     <span>Время: {hours}:{min}</span>
-                    <span>Город: {weatherData.name} </span>
+                    <span>Город: {weatherData.name ? weatherData.name : 'Неизвестно'} </span>
                 </div>
             </div>
         </div>

@@ -1,7 +1,5 @@
 
-
 import React from 'react'
-import { Item } from '../thisDayInfo/ThisDayInfo'
 import '../thisDayItem/thisDayItem.scss'
 
 import { IndicatorSvg } from '../assets/IndicatorSvg'

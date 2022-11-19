@@ -9,32 +9,39 @@ import ThisDayItem from '../thisDayItem/ThisDayItem';
 const ThisDayInfo = (props) => {
     const {
         openModal,
-        weatherData = []
+        weatherData = {},
+        weatherTemp = [{}],
+        weatherWind = {}
     } = props
 
 
+    
         const items = [{
 
             icon_id: 'temp',
             name: 'Температура:',
-            value: 'xx'
+            value:  `${Math.floor(weatherData.temp)} ощущается как ${weatherData.feels_like} `
+
         },
         {
             icon_id: 'pressure',
             name: 'Давление:',
-            value: `xxx`
+            value: `${weatherData.pressure} - нормальное`
         },
         {
             icon_id: 'precipitation',
             name: 'Осадки:',
-            value: `xxx`
+            value: `${weatherTemp[0].description}`
         },
         {
             icon_id: 'wind',
             name: 'Ветер:',
-            value: `xxx`
+            value: `${weatherWind.speed} м/с`
         }
         ] 
+    
+
+        
 
     return (
         <div className='dayInfo' onClick={openModal} >
@@ -43,7 +50,7 @@ const ThisDayInfo = (props) => {
                         <ThisDayItem key={item.icon_id} item={item} />
                     ))}
             </div>
-            <img width={460} height={200} className='cloud' src='./images/cloud.png' alt='cloud' />
+            <img width={430} height={180} className='cloud' src='./images/cloud.png' alt='cloud' />
         </div>
     )
 }
