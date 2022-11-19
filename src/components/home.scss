@@ -1,0 +1,13 @@
+body {
+    background: var(#{--body-background-default});
+}
+
+.home {
+    width: 1200px;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+    margin-top: 30px;
+
+
+}

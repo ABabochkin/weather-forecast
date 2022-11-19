@@ -1,0 +1,61 @@
+.header {
+    max-width: 100%;
+
+    .wrapper {
+        width: 1200px;
+        height: 65px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+
+        box-shadow: var(#{--card-shadow-default});
+        border-radius: 20px;
+
+        img {
+            cursor: pointer;
+        }
+
+        .left {
+            display: flex;
+            width: 250px;
+            align-items: center;
+
+            h3 {
+                color: #4793FF;
+                font-size: 25px;
+                margin-left: 20px;
+                font-family: 'Montserrat';
+                font-style: normal;
+                font-weight: 700;
+
+            }
+        }
+
+        .right {
+            display: flex;
+            width: 250px;
+            align-items: center;
+
+            img {
+                margin-right: 25px;
+            }
+
+            .input {
+                width: 180px;
+                height: 30px;
+                background-color: rgba(71, 147, 255, 0.2);
+                border-radius: 10px;
+                border: none;
+                color: var(#{--text-color-default});
+                margin-right: 10px;
+            }
+
+            .search {
+                position: relative;
+                right: 35px;
+            }
+        }
+
+    }
+}
