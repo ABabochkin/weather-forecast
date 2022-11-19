@@ -28,7 +28,13 @@ const Home = (props) => {
     }
     
     useEffect(() => {
-        getWeather()
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=Москва&appid=${API_KEY}&units=metric&lang=ru`) 
+        .then((response) => response.json())
+        .then((response) => {
+            setWeatherData(response)
+            console.log(weatherData)
+        } )
+        .catch(err => console.log(err)) 
     }, [] )
 
     

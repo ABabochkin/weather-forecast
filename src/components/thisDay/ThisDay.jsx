@@ -1,4 +1,5 @@
 import React from 'react'
+import { GlobalSvg } from '../assets/GlobalSvg';
 
 import '../thisDay/thisDay.scss'
 
@@ -23,7 +24,22 @@ const ThisDay = (props) => {
                         { weatherData.main ? <p>{Math.floor(weatherData.main.temp)}°</p> : null } 
                         <span>Сегодня</span>
                     </div>
-                    <img width={120} height={120} src='./images/sun.png' alt='sun' />
+
+            {
+                weatherData.weather ?  
+
+                <img 
+                    height={140} 
+                    src={process.env.PUBLIC_URL + `/Images/${weatherData.weather[0].main}.svg`}
+                    alt='weather' 
+                /> : 
+                null
+            }
+                
+
+
+
+
                 </div>
                 <div className='day-under' >
                     <span>Время: {hours}:{min}</span>

@@ -10,7 +10,7 @@ const Header = (props) => {
     const {getWeather = Function.prototype} = props
 
     const [theme, setTheme] = useState('light');
-    const [location, setLocation] = useState('Москва') 
+    const [location, setLocation] = useState('') 
 
 
     const changeTheme = () => {
@@ -40,7 +40,7 @@ const Header = (props) => {
                     <h3>WEATHER</h3>
                 </div>
                 <div className='right'>
-                    <img width={35} height={35} src='./images/theme.png' alt='logo'  onClick={changeTheme} />
+                    <img width={35} height={35} src='./images/theme.svg' alt='logo'  onClick={changeTheme} />
                     <input 
                         className='input' 
                         type='text' 
