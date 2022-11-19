@@ -1,5 +1,5 @@
 import React from 'react'
-import { GlobalSvg } from '../assets/GlobalSvg';
+
 
 import '../thisDay/thisDay.scss'
 
