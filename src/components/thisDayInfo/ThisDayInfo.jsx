@@ -20,7 +20,7 @@ const ThisDayInfo = (props) => {
 
             icon_id: 'temp',
             name: 'Температура:',
-            value:  `${Math.floor(weatherData.temp)} ощущается как ${weatherData.feels_like} `
+            value:  `${Math.floor(weatherData.temp)}° ощущается как ${Math.floor(weatherData.feels_like)}°`
 
         },
         {

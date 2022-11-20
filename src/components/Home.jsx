@@ -46,8 +46,17 @@ const Home = (props) => {
 
     return (
         <div>
-        { modal ?  <Popup openModal={openModal} weatherData={weatherData} /> : null } 
-            <Header getWeather={getWeather} location  />
+        { modal ?  
+            <Popup
+                openModal={openModal} 
+                weatherData={weatherData.main} 
+                weatherTemp = {weatherData.weather} 
+                weatherWind = {weatherData.wind} 
+                mainInfo = {weatherData}
+
+            /> : 
+                null } 
+            <Header getWeather={getWeather}   />
             <div className='home' >
                 <ThisDay 
                     openModal={openModal} 
