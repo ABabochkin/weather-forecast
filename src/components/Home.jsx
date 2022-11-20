@@ -48,8 +48,8 @@ const Home = (props) => {
         <div>
         { modal ?  
             <Popup
-                openModal={openModal} 
-                weatherData={weatherData.main} 
+                weatherData={weatherData.main}
+                openModal = {openModal}
                 weatherTemp = {weatherData.weather} 
                 weatherWind = {weatherData.wind} 
                 mainInfo = {weatherData}

@@ -1,10 +1,6 @@
 import React from 'react'
-
-import '../popup/popup.scss'
-
 import ThisDayItem from '../thisDayItem/ThisDayItem'
-
-
+import '../popup/popup.scss'
 import { GlobalSvg } from '../assets/GlobalSvg'
 
 
@@ -16,7 +12,7 @@ const Popup = (props) => {
         weatherTemp = [{}],
         weatherWind = {},
         mainInfo = {},
-    } = props
+    } =  props
 
     const items = [{
 

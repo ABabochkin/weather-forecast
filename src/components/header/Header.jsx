@@ -9,14 +9,22 @@ import '../header/header.scss'
 const Header = (props) => {
     const {getWeather = Function.prototype} = props
 
-    const [theme, setTheme] = useState('light');
-    const [location, setLocation] = useState('') 
+    const [location, setLocation] = useState('');
+    
+    const [theme, setTheme] = useState(JSON.parse(localStorage.getItem('theme')) || 'dark' );
 
 
     const changeTheme = () => {
-        setTheme(theme === 'light' ? 'dark' : 'light');
+        localStorage.setItem('theme', JSON.stringify('light'));
+        setTheme(theme === 'light' ? 'dark' : 'light')
     }
 
+    useEffect(() => {
+        localStorage.setItem('theme', JSON.stringify(theme))
+    }, [theme] )
+
+    
+    
     useEffect(() => {
         const root = document.querySelector(':root');
         root.style.setProperty('--body-background-default', `var(--body-background-${theme})`);
