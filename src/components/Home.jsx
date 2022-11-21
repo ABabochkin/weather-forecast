@@ -3,7 +3,7 @@ import Header from './header/Header';
 import ThisDay from './thisDay/ThisDay';
 import ThisDayInfo from './thisDayInfo/ThisDayInfo';
 import Popup from './popup/Popup';
-import Days from './days/Days';
+import Card from '../components/days/Card'
 
 
 import '../components/home.scss';
@@ -14,28 +14,34 @@ const Home = (props) => {
 
     const [modal, setModal] = useState(false);
     const [weatherData, setWeatherData] = useState({});
+    //const [mainData, setMainData] = useState({}) 
+    
     
     const API_KEY = process.env.REACT_APP_API_KEY;
 
-    const getWeather = (location) => {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_KEY}&units=metric&lang=ru`) 
+    const getWeather = async (location) => {
+        try {
+            fetch(`https://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}&q=${location}&units=metric&lang=ru&cnt=7`) 
             .then((response) => response.json())
-            .then((response) => {
-                setWeatherData(response)
-                console.log(weatherData)
+            .then((data) => {
+                setWeatherData(data)
             } )
-            .catch(err => console.log(err)) 
+        } 
+        catch (error) {
+            alert('Произошла ошибка')
+        }
+        
     }
     
     useEffect(() => {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=Москва&appid=${API_KEY}&units=metric&lang=ru`) 
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}&q=Москва&units=metric&lang=ru&cnt=7`) 
         .then((response) => response.json())
         .then((response) => {
             setWeatherData(response)
-            console.log(weatherData)
+            
         } )
         .catch(err => console.log(err)) 
-    }, [] )
+    }, [] ) 
 
     
 
@@ -48,7 +54,6 @@ const Home = (props) => {
         <div>
         { modal ?  
             <Popup
-                weatherData={weatherData.main}
                 openModal = {openModal}
                 weatherTemp = {weatherData.weather} 
                 weatherWind = {weatherData.wind} 
@@ -58,18 +63,31 @@ const Home = (props) => {
                 null } 
             <Header getWeather={getWeather}   />
             <div className='home' >
+
                 <ThisDay 
                     openModal={openModal} 
-                    weatherData={weatherData} 
+                    weatherData={weatherData.list}
+                    weatherCity={weatherData.city}
                 />
                 <ThisDayInfo 
                     openModal={openModal} 
-                    weatherData={weatherData.main} 
+                    
                     weatherTemp = {weatherData.weather} 
                     weatherWind = {weatherData.wind}
                 /> 
             </div>
-            <Days />
+            <div  className='days'>
+
+            {weatherData.list?.map((day, index) => (
+                <Card 
+                    key={index}
+                    dayTemp = {day.main}
+                    dayInfo = {day.weather}
+                    
+                />
+            ) )}
+
+            </div>   
         </div>
     )
 }

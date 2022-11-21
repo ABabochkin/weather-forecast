@@ -7,13 +7,15 @@ import Tabs from '../days/Tabs'
 
 const Days = (props) => {
 
+    const {tempHigh = [] } = props
+
     const days = [
         {
             day: 'Сегодня',
             day_info: '28 авг',
             icon_id: 'sun',
-            temp_day: '+18',
-            temp_night: '+15',
+            temp_day: `${tempHigh.temp}`,
+            temp_night: 'xx',
             info: 'Облачно',
         },
         {
@@ -71,9 +73,10 @@ const Days = (props) => {
         <>
             <Tabs />
             <div className='days'>
-                {days.map((day) => (
+                {days.map((day, index) => (
                     <Card
                         day={day}
+                        key={index}
                     />
                 ))}
             </div>

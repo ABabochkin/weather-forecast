@@ -9,7 +9,6 @@ import ThisDayItem from '../thisDayItem/ThisDayItem';
 const ThisDayInfo = (props) => {
     const {
         openModal,
-        weatherData = {},
         weatherTemp = [{}],
         weatherWind = {}
     } = props
@@ -20,13 +19,13 @@ const ThisDayInfo = (props) => {
 
             icon_id: 'temp',
             name: 'Температура:',
-            value:  `${Math.floor(weatherData.temp)}° ощущается как ${Math.floor(weatherData.feels_like)}°`
+            value:  `20гр`
 
         },
         {
             icon_id: 'pressure',
             name: 'Давление:',
-            value: `${weatherData.pressure} - нормальное`
+            value: `давление - нормальное`
         },
         {
             icon_id: 'precipitation',

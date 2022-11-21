@@ -9,7 +9,8 @@ const ThisDay = (props) => {
 
     const {
         openModal,
-        weatherData = [] ,
+        weatherData = [{}],
+        weatherCity = [],
     } = props 
 
     const hours = new Date().getHours();
@@ -21,31 +22,22 @@ const ThisDay = (props) => {
     return (
         <div className='container'>
             <div className='day' onClick={openModal} >
-                <div className='day-upper' >
-                    <div className='day-temp' >
-                        { weatherData.main ? <p>{Math.floor(weatherData.main.temp)}°</p> : <p style={{fontSize:'50px', color:'red'}} >Неизвестно</p> } 
+                <div className='day-upper'>
+                    <div className='day-temp'>
+                        {weatherData[0].main ? <p>{Math.floor(weatherData[0].main.temp)}°</p> : null }
                         <span>Сегодня</span>
                     </div>
-
-            {
-                weatherData.weather ?  
-
+            {weatherData[0].weather ?  
                 <img 
                     height={140} 
-                    src={process.env.PUBLIC_URL + `/Images/${weatherData.weather[0].main}.svg`}
+                    src={process.env.PUBLIC_URL + `/Images/${weatherData[0].weather[0].main}.svg`}
                     alt='weather' 
                 /> : 
-                null
-            }
-                
-
-
-
-
+                null}
                 </div>
                 <div className='day-under' >
                     <span>Время: {hours}:{min}</span>
-                    <span>Город: {weatherData.name ? weatherData.name : 'Неизвестно'} </span>
+                    <span>Город: {weatherCity.name ? weatherCity.name : 'Неизвестно'} </span>
                 </div>
             </div>
         </div>

@@ -18,9 +18,10 @@ const Tabs = (props) => {
     return (
         <div className='tabs' >
             <div className='tabs-wrapper' >
-                {tabs.map((tab) => (
+                {tabs.map((tab, index) => (
                     <button className='tab' >
                         {tab.value}
+                    
                     </button>
                 ))}
             </div>
