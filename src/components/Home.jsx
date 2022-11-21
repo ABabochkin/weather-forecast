@@ -69,7 +69,13 @@ const Home = (props) => {
                     weatherWind = {weatherData.wind}
                 /> 
             </div>
-            <Days />
+            <Days
+                weatherData={weatherData.main}
+                openModal = {openModal}
+                weatherTemp = {weatherData.weather} 
+                weatherWind = {weatherData.wind} 
+                mainInfo = {weatherData}
+            />
         </div>
     )
 }
